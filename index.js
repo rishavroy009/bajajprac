@@ -1,4 +1,3 @@
-
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
@@ -9,25 +8,24 @@ app.post('/bfhl', (req, res) => {
 const arr = req.body.data;
 console.log(arr);
 
+const userId = "rishav_roy_20082003";
+const emailId = "rishav1165.be21@chitkara.edu.in"
+const rollNumber= 2110991165;
+
+const alphabetsArr = arr.filter(ch => /[a-zA-Z]/.test(ch)).map(ch => ch.toUpperCase());
+const oddNums = arr.filter(item => /^\d+$/.test(item)).filter(item => item % 2 !== 0);
+const evenNums = arr.filter(item => /^\d+$/.test(item)).filter(item => item % 2 === 0);
 
 
-
-const evens = input.filter(num => isNumber(num)&& num % 2 === 0);
-const odds = input.filter(num =>isNumber(num) && num % 2 !== 0);
-const alphabets = input.filter(char => /[a-zA-Z]/.test(char)).map(char => char.toUpperCase());
-
-const user_id = "rishav_roy_20082003";
-const user_email=  "rishav1165.be21@chitkara.edu.in";
-const rollnum="2110991165"
 
 const resp = {
     is_success: true,
-    user_id: user_id,email:user_email,
-    roll_number:rollnum,
- 
-    even_numbers: evens,
-    odd_numbers: odds,
-    alphabets_uppercase: alphabets
+    user_id: userId,
+    email: emailId,
+    roll_number: rollNumber, 
+    odd_numbers: oddNums, 
+    even_numbers: evenNums,
+    alphabets: alphabetsArr
 };
 
 res.json(resp);
